@@ -10,4 +10,9 @@ public class HelloController {
     public String hello() {
         return "Hello World";
     }
+
+    @GetMapping("/heitor")
+    public String heitor() {
+        return "Testando endpoint heitor";
+    }
 }
