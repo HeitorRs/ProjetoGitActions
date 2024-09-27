@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projetogithubactions
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: projetogithubactions
+  template:
+    metadata:
+      labels:
+        app: projetogithubactions
+    spec:
+      containers:
+        - name: projetogithubactions
+          image: heitor/projetogithubactions:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: projetogithubactions-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: projetogithubactions
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
